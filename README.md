@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Blogs Urbio
 
-## Getting Started
+## Overview
+Blogs Urbio is a Next.js-powered blog application that fetches and displays blog posts from jsonPlaceholder APIs. It is deployed at [blogs-urbio.vercel.app](https://blogs-urbio.vercel.app/).
 
-First, run the development server:
+## Features
+- API calls and data caching with RTK Query.
+- Optimized API calls to fetch and store transformed data in Redux.
+- Responsive design with a simple and clean UI.
 
+---
+
+## 🚀 Running the Project Locally
+
+### Prerequisites
+- Node.js (v22.14.0 recommended)
+- npm or yarn
+
+### Installation & Setup
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Clone the repository
+git clone https://github.com/hasin-zaman/Blogs-Next-Urbio
+cd Blogs-Next-Urbio
+
+# Install dependencies
+npm install  # or yarn install
+
+# Run the development server
+npm run dev  # or yarn dev
+
+# Open the project in your browser
+http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Design Decisions & Challenges
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 1️⃣ Handling Missing Author Names
+The API only provided author IDs instead of names, so an additional request was needed to fetch user details. To optimize performance:
+- **Transformed API response**: Combined posts and user data before storing them.
+- **Stored transformed data in Redux**: Eliminated redundant API calls for each blog page.
 
-## Learn More
+### 2️⃣ Optimizing API Calls
+Since each blog page required an author's name but calling the API repeatedly would be inefficient:
+- Stored processed blog posts in Redux.
+- This eliminated API calls when navigating between blog pages.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏗 Tech Stack
+- **TypeScript** – Language
+- **Next.js** – Framework
+- **Redux Toolkit & RTK Query** – State & API management
+- **MUI** – Styling
